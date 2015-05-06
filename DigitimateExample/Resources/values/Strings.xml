@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">DigitimateExample</string>
+
+	<string name="description">
+	This app will send a text to the phone it is ran on containing a code to enter
+	and determine if the code matches the one sent.
+	</string>
+
+	<string name="click_to_validate_phone">Click To Validate Phone</string>
+
+	<string name="dialog_title">Enter code</string>
+
+	<string name="error_no_number">No number for this device could be found.</string>
+	<string name="error_server">There was an error on the server: {0}</string>
+	<string name="error_phone_validate_successful">Phone has been validated.</string>
+	<string name="error_phone_validate_failure">Phone validation has failed.</string>
+
+	<string name="send_message">The code from the digitimate example application is:\n</string>
+</resources>
