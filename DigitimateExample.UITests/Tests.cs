@@ -22,14 +22,20 @@ namespace DigitimateExample.UITests
         [Test]
         public void ClickingButtonTwiceShouldChangeItsLabel()
         {
-            Func<AppQuery, AppQuery> MyButton = c => c.Button("myButton");
+            Func<AppQuery, AppQuery> validateButton = c => c.Button("validateButton");
+            app.Tap(validateButton);
 
-            app.Tap(MyButton);
-            app.Tap(MyButton);
-            AppResult[] results = app.Query(MyButton);
-            app.Screenshot("Button clicked twice.");
+            Func<AppQuery, AppQuery> codeInput = c => c.TextField("codeInput");
 
-            Assert.AreEqual("2 clicks!", results[0].Text);
+            app.WaitForElement(codeInput);
+
+            app.EnterText(codeInput, "000000");
+
+            app.Tap(c => c.Button("button1"));
+
+            AppResult[] result = app.Query(c => c.Button("validateButton").Text("Phone has been validated."));
+
+            Assert.IsFalse(result.Any());
         }
     }
 }

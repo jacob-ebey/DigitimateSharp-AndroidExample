@@ -8,6 +8,7 @@ using Android.Widget;
 
 using DigitimateSharp;
 using Result = DigitimateSharp.Result;
+using Android.Views;
 
 namespace DigitimateExample
 {
@@ -47,10 +48,10 @@ namespace DigitimateExample
                 Task<Result> sendCodeTask = validator.SendCodeAsync(phoneNumber);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                View dialogView = LayoutInflater.Inflate(Resource.Layout.InputDialog, null);
                 builder.SetTitle(Resource.String.dialog_title);
-                EditText input = new EditText(this);
-                input.SetRawInputType(Android.Text.InputTypes.ClassNumber);
-                builder.SetView(input);
+                EditText input = dialogView.FindViewById<EditText>(Resource.Id.codeInput);
+                builder.SetView(dialogView);
                 builder.SetPositiveButton("OK", async delegate(object sender, Android.Content.DialogClickEventArgs e2)
                     {
                         Result sendResult = await sendCodeTask;
